@@ -6,6 +6,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import LoadingBar from "react-top-loading-bar";
 import { ToastContainer, toast } from "react-toastify";
+import MyImage from '../assets/authimage.webp';
 
 export default function Login() {
   const [cookies] = useCookies([]);
@@ -143,7 +144,7 @@ export default function Login() {
           <div className="w-1/2 md:block hidden ">
             <img
               className=" rounded-2xl"
-              src="https://images.unsplash.com/photo-1616606103915-dea7be788566?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+              src={MyImage}
               alt=""
             />
           </div>

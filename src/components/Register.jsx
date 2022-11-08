@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import {  FaRegEye } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingBar from "react-top-loading-bar";
+import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
+import MyImage from '../assets/authimage.webp';
 
 export default function Register() {
   //stores inputs
@@ -13,6 +15,16 @@ export default function Register() {
     email: "",
     password: "",
   });
+  
+  //navigation
+  const navigate = useNavigate();
+
+  const [cookies] = useCookies([]);
+  useEffect(() => {
+    if (cookies.jwt) {
+      navigate("/");
+    }
+  }, [cookies, navigate]);
 
   //handle inputs
 
@@ -23,8 +35,6 @@ export default function Register() {
   //loading bar
   const [progress, setProgress] = useState(0);
 
-  //navigation
-  const navigate = useNavigate();
 
   // error handling
 
@@ -148,7 +158,7 @@ export default function Register() {
           <div className="w-1/2 md:block hidden ">
             <img
               className=" rounded-2xl"
-              src="https://images.unsplash.com/photo-1616606103915-dea7be788566?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+              src={MyImage}
               alt=""
             />
           </div>
