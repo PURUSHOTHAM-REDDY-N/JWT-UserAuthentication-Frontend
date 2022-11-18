@@ -57,7 +57,6 @@ export default function Login() {
 
       if (data.errors) {
         const { email, password } = data.errors;
-        console.log("in errors");
         if (email) generateError(email);
         else if (password) generateError(password);
         setProgress(100);
