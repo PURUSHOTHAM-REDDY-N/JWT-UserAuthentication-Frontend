@@ -15,7 +15,7 @@ export default function Secret() {
         navigate("/login");
       } else {
         const { data } = await axios.post(
-          "http://localhost:503/api/auth/",
+          process.env.REACT_APP_BACKEND_URL,
           {},
           {
             withCredentials: true,
