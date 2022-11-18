@@ -48,7 +48,7 @@ export default function Register() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:503/api/auth/register",
+        `${process.env.REACT_APP_BACKEND_URL}/register`,
         {
           ...values,
         },

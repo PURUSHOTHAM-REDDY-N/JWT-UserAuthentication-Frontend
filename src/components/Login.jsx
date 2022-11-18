@@ -46,7 +46,7 @@ export default function Login() {
     //and getting response from the server in the form of response
 
     const { data } = await axios.post(
-      "http://localhost:503/api/auth/login",
+      `${process.env.REACT_APP_BACKEND_URL}/login`,
       {
         ...values,
       },
@@ -54,7 +54,6 @@ export default function Login() {
     );
 
     if (data) {
-      console.log(data);
 
       if (data.errors) {
         const { email, password } = data.errors;
