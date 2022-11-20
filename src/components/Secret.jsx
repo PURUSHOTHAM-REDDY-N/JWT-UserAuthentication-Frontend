@@ -23,8 +23,7 @@ export default function Secret() {
           );
           if (!data.status) {
           
-          removeCookie("jwt");
-          navigate("/login");
+          
         } else
           toast(`Hi ${data.user} 🦄`, {
             theme: "dark",
