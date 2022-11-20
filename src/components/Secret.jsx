@@ -16,7 +16,7 @@ export default function Secret() {
       } else {
         console.log("inside secret js")
         const { data } = await axios.post(
-          process.env.REACT_AP_BACKEND_URL,
+          `${process.env.REACT_AP_BACKEND_URL}/`,
           {},
           {
             withCredentials: true,
