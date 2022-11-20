@@ -23,7 +23,7 @@ export default function Secret() {
           }
           );
           if (!data.status) {
-          
+          console.log("inside server status status")
           removeCookie("jwt");
           navigate("/login");
         } else
