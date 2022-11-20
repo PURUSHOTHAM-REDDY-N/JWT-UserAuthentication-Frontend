@@ -14,17 +14,18 @@ export default function Secret() {
       if (!cookies.jwt) {
         navigate("/login");
       } else {
+        console.log("inside secret js")
         const { data } = await axios.post(
-          process.env.REACT_APP_BACKEND_URL,
+          process.env.REACT_AP_BACKEND_URL,
           {},
           {
             withCredentials: true,
           }
           );
           if (!data.status) {
+          
           removeCookie("jwt");
-          
-          
+          navigate("/login");
         } else
           toast(`Hi ${data.user} 🦄`, {
             theme: "dark",
