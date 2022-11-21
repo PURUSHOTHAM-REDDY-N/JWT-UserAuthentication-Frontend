@@ -24,7 +24,7 @@ export default function Secret() {
           );
           if (!data.status) {
           console.log("inside server status status")
-          removeCookie("jwt");
+          removeCookie("jwt",{path:'/'});
           navigate("/login");
         } else
           toast(`Hi ${data.user} 🦄`, {
