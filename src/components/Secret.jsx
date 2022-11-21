@@ -37,7 +37,7 @@ export default function Secret() {
 
   const logOut = () => {
     console.log("remove cookie with path")
-    removeCookie("jwt");
+    removeCookie("jwt",{path:'/'});
     console.log("inside remove cookie");
     navigate("/login");
   };
