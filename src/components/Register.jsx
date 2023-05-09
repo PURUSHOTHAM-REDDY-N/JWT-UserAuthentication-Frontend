@@ -9,6 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 import MyImage from '../assets/authimage.webp';
 
 export default function Register() {
+
+  const maxAge=3*24*60*60;
   //stores inputs
   const [values, setValues] = useState({
     username: "",
@@ -19,7 +21,7 @@ export default function Register() {
   //navigation
   const navigate = useNavigate();
 
-  const [cookies] = useCookies([]);
+  const [cookies, setCookie] = useCookies([]);
   useEffect(() => {
     if (cookies.jwt) {
       navigate("/");
@@ -56,6 +58,7 @@ export default function Register() {
       );
 
       if (data) {
+        console.log(data)
         if(data.errors){
 
           const { email, password, username } = data.errors;
@@ -64,6 +67,9 @@ export default function Register() {
           else if (username) generateError(username);
         }
       else{
+        setCookie('jwt',data.jwt,{withCredentials:true,
+          httpOnly:false,
+          maxAge:maxAge*1000})
          navigate("/");
       }
     

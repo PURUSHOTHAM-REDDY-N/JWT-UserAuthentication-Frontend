@@ -9,7 +9,10 @@ import { ToastContainer, toast } from "react-toastify";
 import MyImage from '../assets/authimage.webp';
 
 export default function Login() {
-  const [cookies] = useCookies([]);
+
+  const maxAge=3*24*60*60;
+
+  const [cookies, setCookie] = useCookies([]);
   const navigate = useNavigate();
   useEffect(() => {
     if (cookies.jwt) {
@@ -61,10 +64,16 @@ export default function Login() {
         else if (password) generateError(password);
         setProgress(100);
       }
-    } else {
+     else {
+      setCookie('jwt',data.jwt,{
+        withCredentials:true,
+          httpOnly:false,
+          maxAge:maxAge*1000
+      })
       setProgress(100);
       navigate("/");
     }
+  }
   };
 
   return (
