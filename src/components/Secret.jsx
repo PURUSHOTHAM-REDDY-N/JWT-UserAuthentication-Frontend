@@ -55,9 +55,12 @@ export default function Secret() {
     <>
       <div className="private flex flex-col m-10">
         <h1 className="m-10 text-center"><b>Protected Page</b></h1>
-        <h1 className="m-10 text-center"><b>Welocome {profile?.first_name}</b></h1>
-        <img href={profile?.picture.data.url} />
-        <button className="bg-blue-600 rounded-2xl text-white py-2" onClick={logOut}>Log out</button>
+        {profile ? <>
+        <h1 className=" text-center"><b>Welocome {profile?.first_name}</b></h1>
+        <h1 className="mt-2 text-center"><b>email : {profile?.email}</b></h1>
+        <img href={profile?.picture.data.url} /></>:''}
+        
+        <button className="bg-blue-600 rounded-2xl text-white py-2 mt-5" onClick={logOut}>Log out</button>
       </div>
       <ToastContainer />
     </>
