@@ -16,12 +16,12 @@ export default function Secret() {
   
   useEffect(() => {
 
-    const data = localStorage.getItem('fbdata')
-    setProfile(JSON.parse(data))
+    const data2 = localStorage.getItem('fbdata')
+    setProfile(JSON.parse(data2))
     console.log('this is profile ', profile)
     const verifyUser = async () => {
       
-      if (!data) {
+      if (!data2) {
         navigate("/login");
       } else {
         console.log("inside secret js")
