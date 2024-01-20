@@ -22,7 +22,7 @@ export default function Secret() {
     const verifyUser = async () => {
       
       if (!data2) {
-        navigate("/login");
+        // navigate("/login");
       } else {
         console.log("inside secret js")
         const { data } = await axios.post(
@@ -35,7 +35,7 @@ export default function Secret() {
           if (!data.status) {
           console.log("inside server status status")
           removeCookie("jwt",{path:'/'});
-          navigate("/login");
+          // navigate("/login");
         } else
           toast(`Hi ${data.user} 🦄`, {
             theme: "dark",
