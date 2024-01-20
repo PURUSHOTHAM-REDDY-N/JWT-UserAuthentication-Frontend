@@ -7,8 +7,12 @@ import { useCookies } from "react-cookie";
 import LoadingBar from "react-top-loading-bar";
 import { ToastContainer, toast } from "react-toastify";
 import MyImage from '../assets/authimage.webp';
+import { LoginSocialFacebook } from "reactjs-social-login";
+import { FacebookLoginButton } from "react-social-login-buttons";
 
 export default function Login() {
+
+  const [profile,setProfile]=useState(null)
 
   const maxAge=3*24*60*60;
 
@@ -76,6 +80,21 @@ export default function Login() {
   }
   };
 
+  const handleFBLofin = (response)=>{
+    if(response.data){
+      setCookie('jwt',response.data?.accessToken,{
+        withCredentials:true,
+          httpOnly:false,
+          maxAge:maxAge*1000
+      })
+      localStorage.setItem('fbdata',JSON.stringify(response.data))
+      setProfile(response.data)
+      navigate("/");
+    }
+  }
+
+
+
   return (
     <div>
       <LoadingBar
@@ -133,6 +152,11 @@ export default function Login() {
             <button className="bg-white hover:scale-105 duration-300 border py-2 w-full flex justify-center items-center rounded-xl mt-5 text-sm ">
               <FcGoogle className="mr-3 w-7 h-1/2" /> Login With Google
             </button>
+            <LoginSocialFacebook
+            appId="678853731118344" onResolve={(response)=>{handleFBLofin(response)}} onReject={(error)=>{console.log(error)}}>
+            <FacebookLoginButton/>
+            </LoginSocialFacebook>
+            
 
             <div className="mt-10 text-xs border-b border-gray-400 py-4">
               Forgot your password?
