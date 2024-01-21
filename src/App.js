@@ -5,6 +5,8 @@ import Home from './components/Home'
 import Secret from './components/Secret'
 import Register from './components/Register'
 import 'react-toastify/dist/ReactToastify.css';
+import PrivacyPolicy from './components/PrivacyPolicy'
+import TermsOfService from './components/TermsOfService'
 
 export default function App() {
   return (
@@ -13,6 +15,8 @@ export default function App() {
           <Route path='/' element={<Secret/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
+          <Route path='/terms-of-service' element={<TermsOfService/>}/>
         </Routes>
     </BrowserRouter>
   )
