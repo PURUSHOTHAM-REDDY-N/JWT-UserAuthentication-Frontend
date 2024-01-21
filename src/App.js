@@ -7,6 +7,7 @@ import Register from './components/Register'
 import 'react-toastify/dist/ReactToastify.css';
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsOfService from './components/TermsOfService'
+import Deletion from './components/Deletion'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
           <Route path='/terms-of-service' element={<TermsOfService/>}/>
+          <Route path='/account-deletion' element={<Deletion/>}/>
         </Routes>
     </BrowserRouter>
   )
